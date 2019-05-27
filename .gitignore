@@ -7,3 +7,11 @@
 /ParaBorrar/.vs/ParaBorrar/v16
 /ParaBorrar/ParaBorrar/bin/Debug/netcoreapp2.2
 /ParaBorrar/ParaBorrar/obj
+/ParaBorrar/.vs/ParaBorrar/DesignTimeBuild
+/PatronEspecificacion/.vs/PatronEspecificacion/v16
+/PatronEspecificacion/PatronEspecificacion.Dominio/bin/Debug/netcoreapp2.2
+/PatronEspecificacion/PatronEspecificacion.Dominio/obj
+/PatronEspecificacion/PatronEspecificacion.InfraestructuraDatos/bin/Debug/netcoreapp2.2
+/PatronEspecificacion/PatronEspecificacion.InfraestructuraDatos/obj
+/PatronEspecificacion/PatronEspecificacion.WebApi/bin/Debug/netcoreapp2.2
+/PatronEspecificacion/PatronEspecificacion.WebApi/obj
