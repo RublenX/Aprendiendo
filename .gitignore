@@ -2,4 +2,8 @@
 # Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
-/PatronEspecificacion
+/.vs
+/ParaBorrar/.vs/ParaBorrar/v16/Server/sqlite3
+/ParaBorrar/.vs/ParaBorrar/v16
+/ParaBorrar/ParaBorrar/bin/Debug/netcoreapp2.2
+/ParaBorrar/ParaBorrar/obj
