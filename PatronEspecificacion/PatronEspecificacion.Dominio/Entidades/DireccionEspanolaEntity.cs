@@ -1,12 +1,13 @@
-﻿using System;
+﻿using PatronEspecificacion.Dominio.Bases;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PatronEspecificacion.Dominio.Entidades
 {
-    public class DireccionEspanolaEntity
+    public class DireccionEspanolaEntity : EntidadBase
     {
-        public int IdDireccion { get; set; }
+        public int Id { get; set; }
 
         public string Provincia { get; set; }
 

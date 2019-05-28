@@ -38,7 +38,7 @@ namespace PatronEspecificacion.Dominio.Servicios
         {
             return direccionesRepository.GetDirecciones().Select(d => new DireccionEspanolaEntity
             {
-                IdDireccion = d.DireccionId,
+                Id = d.DireccionId,
                 Provincia = d.Provincia,
                 Municipio = d.Municipio,
                 Calle = d.Calle
