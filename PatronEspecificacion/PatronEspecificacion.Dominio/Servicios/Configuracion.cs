@@ -1,15 +1,16 @@
-﻿using PatronEspecificacion.InfraestructuraDatos.Persistencia;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PatronEspecificacion.Dominio.Contratos;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PatronEspecificacion.Dominio.Servicios
 {
     public static class Configuracion
     {
-        public static void InicializarBbdd()
+        public static void InicializarBbdd(IServiceProvider serviceProvider)
         {
-            DbInitializer.Initialize(null);
+            // Resuelve la inicialización de forma manual
+            var inicializacionRepo = serviceProvider.GetService<IInicializacionRepository>();
+            inicializacionRepo.InicializarBbdd();
         }
     }
 }

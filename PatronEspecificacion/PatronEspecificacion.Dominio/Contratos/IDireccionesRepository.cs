@@ -1,9 +1,9 @@
-﻿using PatronEspecificacion.InfraestructuraDatos.Modelos;
+﻿using PatronEspecificacion.Dominio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PatronEspecificacion.InfraestructuraDatos.Contratos
+namespace PatronEspecificacion.Dominio.Contratos
 {
     public interface IDireccionesRepository
     {
@@ -11,6 +11,6 @@ namespace PatronEspecificacion.InfraestructuraDatos.Contratos
 
         ICollection<string> DameValoresPrueba(int cantidad);
 
-        ICollection<Direccion> GetDirecciones();
+        ICollection<DireccionEspanolaEntity> GetDirecciones();
     }
 }

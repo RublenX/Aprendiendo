@@ -8,4 +8,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contratos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PatronEspecificacion.Dominio\PatronEspecificacion.Dominio.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(OutDir)PatronEspecificacion.InfraestructuraDatos.dll ..\PatronEspecificacion.WebApi\$(OutDir) /S /D /Y&#xD;&#xA;xcopy $(OutDir)PatronEspecificacion.InfraestructuraDatos.pdb ..\PatronEspecificacion.WebApi\$(OutDir) /S /D /Y" />
+  </Target>
+
 </Project>

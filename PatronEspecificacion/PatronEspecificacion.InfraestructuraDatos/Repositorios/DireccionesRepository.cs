@@ -1,10 +1,12 @@
-﻿using PatronEspecificacion.InfraestructuraDatos.Contratos;
+﻿//using PatronEspecificacion.InfraestructuraDatos.Contratos;
 using PatronEspecificacion.InfraestructuraDatos.Modelos;
 using PatronEspecificacion.InfraestructuraDatos.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using PatronEspecificacion.Dominio.Contratos;
+using PatronEspecificacion.Dominio.Entidades;
 
 namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
 {
@@ -25,13 +27,19 @@ namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
             return salida;
         }
 
-        public ICollection<Direccion> GetDirecciones()
+        public ICollection<DireccionEspanolaEntity> GetDirecciones()
         {
-            ICollection<Direccion> salida;
+            ICollection<DireccionEspanolaEntity> salida;
 
             using (PoCEspecificacionContext ctx = new PoCEspecificacionContext())
             {
-                salida = ctx.Direcciones.ToList();
+                salida = ctx.Direcciones.Select(d => new DireccionEspanolaEntity
+                {
+                    Id = d.DireccionId,
+                    Provincia = d.Provincia,
+                    Municipio = d.Municipio,
+                    Calle = d.Calle
+                }).ToList();
             }
 
             return salida;

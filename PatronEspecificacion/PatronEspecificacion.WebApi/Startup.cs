@@ -50,7 +50,7 @@ namespace PatronEspecificacion.WebApi
             app.UseHttpsRedirection();
             app.UseMvc();
 
-            Configuracion.InicializarBbdd();
+            Configuracion.InicializarBbdd(app.ApplicationServices);
         }
     }
 }

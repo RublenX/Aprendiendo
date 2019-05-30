@@ -1,0 +1,12 @@
+[
+  {
+    "ContratoEspacioNombres": "PatronEspecificacion.Dominio.Contratos.IDireccionesRepository",
+    "ImplementadorRutaEnsamblado": "PatronEspecificacion.InfraestructuraDatos.dll",
+    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.DireccionesRepository"
+  },
+  {
+    "ContratoEspacioNombres": "PatronEspecificacion.Dominio.Contratos.IInicializacionRepository",
+    "ImplementadorRutaEnsamblado": "PatronEspecificacion.InfraestructuraDatos.dll",
+    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.InicializacionRepository"
+  }
+]
