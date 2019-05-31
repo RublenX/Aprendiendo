@@ -11,11 +11,11 @@ namespace PatronEspecificacion.Dominio.Servicios.IoC
 {
     public static class GestorDependencias
     {
-        public static Type ObtenerTipoDependencia(string rutaEnsamblado, string tipoClase)
+        public static Type ObtenerTipoDependencia(Type tipoContrato, string rutaEnsamblado, string tipoClase)
         {
             // Obtenido de https://natemcmaster.com/blog/2018/07/25/netcore-plugins/
             PluginLoader loader = PluginLoader.CreateFromAssemblyFile(rutaEnsamblado,
-                        sharedTypes: new[] { typeof(IGestorDirecciones) });
+                        sharedTypes: new[] { tipoContrato });
             Assembly ensamblado = loader.LoadDefaultAssembly();
 
             // Código con AssemblyLoader que da conflicto por no cargar las librerías satélite

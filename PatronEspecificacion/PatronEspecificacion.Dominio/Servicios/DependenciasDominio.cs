@@ -50,12 +50,12 @@ namespace PatronEspecificacion.Dominio.Servicios
                                 if (File.Exists(configuracionDependencia.ImplementadorRutaEnsamblado))
                                 {
                                     // Ruta absoluta
-                                    tipoDependencia = GestorDependencias.ObtenerTipoDependencia(configuracionDependencia.ImplementadorRutaEnsamblado, configuracionDependencia.ImplementadorEspacioNombresClase);
+                                    tipoDependencia = GestorDependencias.ObtenerTipoDependencia(tipoContrato, configuracionDependencia.ImplementadorRutaEnsamblado, configuracionDependencia.ImplementadorEspacioNombresClase);
                                 }
                                 else if (File.Exists(Path.Combine(localPath, configuracionDependencia.ImplementadorRutaEnsamblado)))
                                 {
                                     // Ruta relativa
-                                    tipoDependencia = GestorDependencias.ObtenerTipoDependencia(Path.Combine(localPath, configuracionDependencia.ImplementadorRutaEnsamblado), configuracionDependencia.ImplementadorEspacioNombresClase);
+                                    tipoDependencia = GestorDependencias.ObtenerTipoDependencia(tipoContrato, Path.Combine(localPath, configuracionDependencia.ImplementadorRutaEnsamblado), configuracionDependencia.ImplementadorEspacioNombresClase);
                                 }
 
                                 // Si encuentra el tipo de dependencia lo añade
