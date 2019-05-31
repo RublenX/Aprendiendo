@@ -10,5 +10,6 @@ namespace PatronEspecificacion.Dominio.Servicios.IoC
         public string ContratoEspacioNombres { get; set; }
         public string ImplementadorRutaEnsamblado { get; set; }
         public string ImplementadorEspacioNombresClase { get; set; }
+        public OpcionRegistro TipoRegistro { get; set; }
     }
 }

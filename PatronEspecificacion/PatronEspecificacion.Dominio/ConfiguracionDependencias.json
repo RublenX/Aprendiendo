@@ -2,11 +2,13 @@
   {
     "ContratoEspacioNombres": "PatronEspecificacion.Dominio.Contratos.IDireccionesRepository",
     "ImplementadorRutaEnsamblado": "PatronEspecificacion.InfraestructuraDatos.dll",
-    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.DireccionesRepository"
+    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.DireccionesRepository",
+    "TipoRegistro": "Singleton"
   },
   {
     "ContratoEspacioNombres": "PatronEspecificacion.Dominio.Contratos.IInicializacionRepository",
     "ImplementadorRutaEnsamblado": "PatronEspecificacion.InfraestructuraDatos.dll",
-    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.InicializacionRepository"
+    "ImplementadorEspacioNombresClase": "PatronEspecificacion.InfraestructuraDatos.Repositorios.InicializacionRepository",
+    "TipoRegistro": "Transient"
   }
 ]

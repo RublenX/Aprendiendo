@@ -38,7 +38,6 @@ namespace PatronEspecificacion.Dominio.Servicios.IoC
                 services.AddSingleton(humanType);
             }
             */
-            //return null;
         }
     }
 }
