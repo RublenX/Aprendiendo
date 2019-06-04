@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using PatronEspecificacion.Dominio.Contratos;
-using PatronEspecificacion.Dominio.Entidades;
 using PatronEspecificacion.Dominio.Servicios.IoC;
 using System.IO;
 using System.Reflection;
