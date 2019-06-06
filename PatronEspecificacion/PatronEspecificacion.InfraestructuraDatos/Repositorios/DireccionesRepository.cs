@@ -6,7 +6,7 @@ using PatronEspecificacion.Dominio.Contratos;
 using PatronEspecificacion.Dominio.Entidades;
 using System.Linq.Expressions;
 using PatronEspecificacion.InfraestructuraDatos.Base;
-using PatronEspecificacion.Dominio.Consultas.PatronWiki;
+using PatronEspecificacion.Dominio.Consultas.PatronDdd;
 
 namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
 {
@@ -58,7 +58,7 @@ namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
                     Municipio = d.Municipio,
                     Calle = d.Calle
                 })
-                .Where(d => especificacion.IsSatisfiedBy(d));
+                .Where(especificacion.SatisfiedBy());
                 string parada = query.ToSql();
                 salida = query.ToList();
             }

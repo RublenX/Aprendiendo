@@ -1,4 +1,4 @@
-﻿using PatronEspecificacion.Dominio.Consultas.PatronWiki;
+﻿using PatronEspecificacion.Dominio.Consultas.PatronDdd;
 using PatronEspecificacion.Dominio.Entidades;
 using System;
 using System.Collections.Generic;

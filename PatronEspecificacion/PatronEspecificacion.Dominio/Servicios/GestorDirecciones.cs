@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using PatronEspecificacion.Dominio.Contratos;
 using PatronEspecificacion.Dominio.Consultas;
+using PatronEspecificacion.Dominio.Consultas.PatronDdd;
 
 namespace PatronEspecificacion.Dominio.Servicios
 {
@@ -23,9 +24,9 @@ namespace PatronEspecificacion.Dominio.Servicios
         public ICollection<DireccionEspanolaEntity> ObtenerDirecciones()
         {
             // Código de prueba de concepto
-            DireccionesPorProvinciaSpecification esp1 = new DireccionesPorProvinciaSpecification("Madrid");
-            DireccionesPorMunicipioSpecification esp2 = new DireccionesPorMunicipioSpecification("Madrid");
-            var dirPro1 = direccionesRepository.GetDirecciones(esp1.And(esp2));
+            var esp1 = new DireccionesPorProvinciaSpecification("Madrid");
+            var esp2 = new DireccionesPorMunicipioSpecification("Madrid");
+            var dirPro1 = direccionesRepository.GetDirecciones(esp1&esp2);
             //var dirPro1 = direccionesRepository.GetDirecciones(esp1&esp2);
 
             // Sin las especificaciones y con el arbol de expresiones
