@@ -5,30 +5,30 @@ using System.Linq.Expressions;
 
 namespace PatronEspecificacion.Dominio.Consultas
 {
-    public class DireccionesPorMunicipioSpecification : Specification<DireccionEspanolaEntity>
+    public class DireccionesPorProvinciaSpecificationDdd : Specification<DireccionEspanolaEntity>
     {
-        private readonly string municipio;
+        private readonly string provincia;
 
-        public DireccionesPorMunicipioSpecification(string municipio) : base()
+        public DireccionesPorProvinciaSpecificationDdd(string provincia)
         {
-            this.municipio = municipio;
+            this.provincia = provincia;
         }
 
         public override Expression<Func<DireccionEspanolaEntity, bool>> SatisfiedBy()
         {
-            return (x) => x.Municipio == this.municipio;
+            return (x) => x.Provincia == this.provincia;
         }
 
         // De la implementación de la Wikipedia
         //public override Expression<Func<DireccionEspanolaEntity, bool>> AsExpression()
         //{
-        //    return (x) => x.Municipio == this.municipio;
+        //    return (x) => x.Provincia == this.provincia;
         //}
 
         // De la implementación básica
         //public override Expression<Func<DireccionEspanolaEntity, bool>> IsSatisfiedBy()
         //{
-        //    return (x) => x.Municipio == this.municipio;
+        //    return (x) => x.Provincia == this.provincia;
         //}
     }
 }

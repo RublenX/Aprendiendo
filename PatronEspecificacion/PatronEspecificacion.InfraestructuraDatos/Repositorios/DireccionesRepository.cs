@@ -6,27 +6,11 @@ using PatronEspecificacion.Dominio.Contratos;
 using PatronEspecificacion.Dominio.Entidades;
 using System.Linq.Expressions;
 using PatronEspecificacion.InfraestructuraDatos.Base;
-using PatronEspecificacion.Dominio.Consultas.PatronDdd;
 
 namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
 {
     public class DireccionesRepository : IDireccionesRepository
     {
-        public string CualquierValor { get; set; } = "Esta propiedad contiene texto";
-
-        public ICollection<string> DameValoresPrueba(int cantidad)
-        {
-            List<string> salida = new List<string>();
-            Random rdn = new Random();
-
-            for (int i = 0; i < cantidad; i++)
-            {
-                salida.Add(rdn.Next(0, 10000).ToString());
-            }
-
-            return salida;
-        }
-
         public ICollection<DireccionEspanolaEntity> GetDirecciones()
         {
             ICollection<DireccionEspanolaEntity> salida;
@@ -40,27 +24,6 @@ namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
                     Municipio = d.Municipio,
                     Calle = d.Calle
                 }).ToList();
-            }
-
-            return salida;
-        }
-
-        public ICollection<DireccionEspanolaEntity> GetDirecciones(ISpecification<DireccionEspanolaEntity> especificacion)
-        {
-            ICollection<DireccionEspanolaEntity> salida;
-
-            using (PoCEspecificacionContext ctx = new PoCEspecificacionContext())
-            {
-                IQueryable<DireccionEspanolaEntity> query = ctx.Direcciones.Select(d => new DireccionEspanolaEntity
-                {
-                    Id = d.DireccionId,
-                    Provincia = d.Provincia,
-                    Municipio = d.Municipio,
-                    Calle = d.Calle
-                })
-                .Where(especificacion.SatisfiedBy());
-                string parada = query.ToSql();
-                salida = query.ToList();
             }
 
             return salida;
@@ -81,6 +44,69 @@ namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
                         Calle = d.Calle
                     })
                     .Where(d => exp.Compile()(d));
+                string parada = query.ToSql();
+                salida = query.ToList();
+            }
+
+            return salida;
+        }
+
+        public ICollection<DireccionEspanolaEntity> GetDireccionesBasico(Dominio.Consultas.PatronBasico.ISpecification<DireccionEspanolaEntity> especificacion)
+        {
+            ICollection<DireccionEspanolaEntity> salida;
+
+            using (PoCEspecificacionContext ctx = new PoCEspecificacionContext())
+            {
+                IQueryable<DireccionEspanolaEntity> query = ctx.Direcciones.Select(d => new DireccionEspanolaEntity
+                {
+                    Id = d.DireccionId,
+                    Provincia = d.Provincia,
+                    Municipio = d.Municipio,
+                    Calle = d.Calle
+                })
+                .Where(especificacion.IsSatisfiedBy());
+                string parada = query.ToSql();
+                salida = query.ToList();
+            }
+
+            return salida;
+        }
+
+        public ICollection<DireccionEspanolaEntity> GetDireccionesWiki(Dominio.Consultas.PatronWiki.ISpecification<DireccionEspanolaEntity> especificacion)
+        {
+            ICollection<DireccionEspanolaEntity> salida;
+
+            using (PoCEspecificacionContext ctx = new PoCEspecificacionContext())
+            {
+                IQueryable<DireccionEspanolaEntity> query = ctx.Direcciones.Select(d => new DireccionEspanolaEntity
+                {
+                    Id = d.DireccionId,
+                    Provincia = d.Provincia,
+                    Municipio = d.Municipio,
+                    Calle = d.Calle
+                })
+                .Where(d => especificacion.IsSatisfiedBy(d));
+                string parada = query.ToSql();
+                salida = query.ToList();
+            }
+
+            return salida;
+        }
+
+        public ICollection<DireccionEspanolaEntity> GetDireccionesDdd(Dominio.Consultas.PatronDdd.ISpecification<DireccionEspanolaEntity> especificacion)
+        {
+            ICollection<DireccionEspanolaEntity> salida;
+
+            using (PoCEspecificacionContext ctx = new PoCEspecificacionContext())
+            {
+                IQueryable<DireccionEspanolaEntity> query = ctx.Direcciones.Select(d => new DireccionEspanolaEntity
+                {
+                    Id = d.DireccionId,
+                    Provincia = d.Provincia,
+                    Municipio = d.Municipio,
+                    Calle = d.Calle
+                })
+                .Where(especificacion.SatisfiedBy());
                 string parada = query.ToSql();
                 salida = query.ToList();
             }

@@ -1,12 +1,8 @@
 ﻿using PatronEspecificacion.Dominio.Entidades;
 using PatronEspecificacion.Dominio.Servicios.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using PatronEspecificacion.Dominio.Contratos;
 using PatronEspecificacion.Dominio.Consultas;
-using PatronEspecificacion.Dominio.Consultas.PatronDdd;
 
 namespace PatronEspecificacion.Dominio.Servicios
 {
@@ -23,17 +19,24 @@ namespace PatronEspecificacion.Dominio.Servicios
 
         public ICollection<DireccionEspanolaEntity> ObtenerDirecciones()
         {
-            // Código de prueba de concepto
-            var esp1 = new DireccionesPorProvinciaSpecification("Madrid");
-            var esp2 = new DireccionesPorMunicipioSpecification("Madrid");
-            var dirPro1 = direccionesRepository.GetDirecciones(esp1&esp2);
-            //var dirPro1 = direccionesRepository.GetDirecciones(esp1&esp2);
-
             // Sin las especificaciones y con el arbol de expresiones
-            var dirPro2 = direccionesRepository.GetDirecciones(d => d.Provincia == "Madrid" && d.Municipio == "Madrid");
+            var dirExp = direccionesRepository.GetDirecciones(d => d.Provincia == "Madrid" && d.Municipio == "Madrid");
 
-            //return direccionesRepository.GetDirecciones();
-            return dirPro1;
+            // Consulta por la implementación básica, no admite combinaciones
+            var espBas = new DireccionesPorProvinciaSpecificationBasico("Madrid");
+            var dirBas = direccionesRepository.GetDireccionesBasico(espBas);
+
+            // Combinación de consultas por la implementación según Wikipedia
+            var espWiki1 = new DireccionesPorProvinciaSpecificationWiki("Madrid");
+            var espWiki2 = new DireccionesPorMunicipioSpecificationWiki("Madrid");
+            var dirWiki = direccionesRepository.GetDireccionesWiki(espWiki1.And(espWiki2));
+
+            // Combinación de consultas por la implementación del proyecto DDD
+            var espDdd1 = new DireccionesPorProvinciaSpecificationDdd("Madrid");
+            var espddd2 = new DireccionesPorMunicipioSpecificationDdd("Madrid");
+            var dirDdd = direccionesRepository.GetDireccionesDdd(espDdd1&espddd2);
+
+            return dirDdd;
         }
     }
 }
