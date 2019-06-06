@@ -25,7 +25,7 @@ namespace PatronEspecificacion.Dominio.Servicios
             // Código de prueba de concepto
             DireccionesPorProvinciaSpecification esp1 = new DireccionesPorProvinciaSpecification("Madrid");
             DireccionesPorMunicipioSpecification esp2 = new DireccionesPorMunicipioSpecification("Madrid");
-            var dirPro1 = direccionesRepository.GetDirecciones(esp1);
+            var dirPro1 = direccionesRepository.GetDirecciones(esp1.And(esp2));
             //var dirPro1 = direccionesRepository.GetDirecciones(esp1&esp2);
 
             // Sin las especificaciones y con el arbol de expresiones
