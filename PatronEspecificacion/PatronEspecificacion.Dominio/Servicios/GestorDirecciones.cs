@@ -34,7 +34,20 @@ namespace PatronEspecificacion.Dominio.Servicios
             // Combinación de consultas por la implementación del proyecto DDD
             var espDdd1 = new DireccionesPorProvinciaSpecificationDdd("Madrid");
             var espddd2 = new DireccionesPorMunicipioSpecificationDdd("Madrid");
-            var dirDdd = direccionesRepository.GetDireccionesDdd(espDdd1&espddd2);
+            var dirDdd = direccionesRepository.GetDireccionesDdd(espDdd1 & espddd2);
+
+            // Uniendo las especificaciones en una compleja
+            DireccionEspanolaFiltro filtro = new DireccionEspanolaFiltro { Provincia = "Madrid", Municipio = "Madrid" };
+            var espddd3 = new DireccionesFiltradasSpecificationDdd(filtro);
+            var dirComplex = direccionesRepository.GetDireccionesDdd(espddd3);
+            // Ahora excluyamos a Madrid capital
+            filtro = new DireccionEspanolaFiltro
+            {
+                Provincia = "Madrid",
+                Exclusion = new DireccionEspanolaFiltro() { Municipio = "Madrid"}
+            };
+            var espddd4 = new DireccionesFiltradasSpecificationDdd(filtro);
+            var dirExclus = direccionesRepository.GetDireccionesDdd(espddd4);
 
             return dirDdd;
         }
