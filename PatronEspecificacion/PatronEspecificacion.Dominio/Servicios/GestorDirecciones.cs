@@ -49,7 +49,7 @@ namespace PatronEspecificacion.Dominio.Servicios
             var espddd4 = new DireccionesFiltradasSpecificationDdd(filtro);
             var dirExclus = direccionesRepository.GetDireccionesDdd(espddd4);
 
-            return dirDdd;
+            return dirExclus;
         }
     }
 }

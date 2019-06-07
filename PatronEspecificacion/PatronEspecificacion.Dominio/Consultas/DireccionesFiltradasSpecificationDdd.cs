@@ -24,7 +24,7 @@ namespace PatronEspecificacion.Dominio.Consultas
             }
             if (!string.IsNullOrWhiteSpace(filtro.Municipio))
             {
-                spec &= new DirectSpecification<DireccionEspanolaEntity>(d => d.Municipio == (filtro.Provincia));
+                spec &= new DirectSpecification<DireccionEspanolaEntity>(d => d.Municipio == (filtro.Municipio));
             }
             if (filtro.Exclusion != null)
             {
