@@ -43,7 +43,7 @@ namespace PatronEspecificacion.InfraestructuraDatos.Repositorios
                         Municipio = d.Municipio,
                         Calle = d.Calle
                     })
-                    .Where(d => exp.Compile()(d));
+                    .Where(exp);
                 string parada = query.ToSql();
                 salida = query.ToList();
             }
