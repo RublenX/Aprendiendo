@@ -17,3 +17,8 @@
 /PatronEspecificacion/PatronEspecificacion.WebApi/obj
 /PatronEspecificacion/.vs/PatronEspecificacion
 *.user
+/StackoverflowRespuestas/.vs/StackoverflowRespuestas/v16
+/StackoverflowRespuestas/ReferenciaDll.UnaLibCualquiera/bin/Debug
+/StackoverflowRespuestas/ReferenciaDll.UnaLibCualquiera/obj/Debug
+/StackoverflowRespuestas/WinFrmReferenciaExterna/bin/Debug
+/StackoverflowRespuestas/WinFrmReferenciaExterna/obj/Debug
