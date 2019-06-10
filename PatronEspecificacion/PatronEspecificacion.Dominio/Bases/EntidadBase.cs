@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -104,25 +105,14 @@ namespace PatronEspecificacion.Dominio.Bases
 
         public override string ToString()
         {
-            StringBuilder strBld = new StringBuilder();
-
             try
             {
-                foreach (var prop in this.GetType().GetProperties())
-                {
-                    if (!prop.GetMethod.IsVirtual)
-                    {
-                        string separador = strBld.Length > 0 ? " | " : string.Empty;
-                        strBld.Append($"{separador}[{prop.Name}] : {prop.GetValue(this)}");
-                    }
-                }
+                return JsonConvert.SerializeObject(this, Formatting.Indented);
             }
             catch (Exception ex)
             {
                 return base.ToString() + $" - Excepción obteniendo los valores de las propiedades: {ex.Message}";
             }
-
-            return strBld.ToString();
         }
 
         public virtual object Clone()
