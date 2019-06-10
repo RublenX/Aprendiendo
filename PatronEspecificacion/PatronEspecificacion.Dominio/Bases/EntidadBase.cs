@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace PatronEspecificacion.Dominio.Bases
 {
@@ -63,7 +61,15 @@ namespace PatronEspecificacion.Dominio.Bases
             {
                 var valorEsperado = prop.GetValue(obj);
                 var valorRecibido = prop.GetValue(this);
-                if (!valorEsperado.Equals(valorRecibido))
+                if (valorEsperado == null && valorRecibido != null)
+                {
+                    return false;
+                }
+                if (valorEsperado != null && valorRecibido == null)
+                {
+                    return false;
+                }
+                if (valorEsperado != null && valorRecibido != null && !valorEsperado.Equals(valorRecibido))
                 {
                     return false;
                 }
@@ -87,6 +93,7 @@ namespace PatronEspecificacion.Dominio.Bases
             {
                 return false;
             }
+            bool iguales = object.ReferenceEquals(obj1, obj2);
             return obj1.Equals(obj2);
         }
 
@@ -115,12 +122,21 @@ namespace PatronEspecificacion.Dominio.Bases
             }
         }
 
-        public virtual object Clone()
+        #region Implementación ICloneable
+        public virtual EntidadBase Clone()
         {
-            // OJO para propiedades de colecciones o tipos por referencia hay que programarlo manualmente
-            object copia = this.MemberwiseClone();
-
-            return copia;
+            // ATENCIÓN : Como no se puede predecir el comportamiento del método Clone se recomienda no
+            // implementar ICloneable en APIs públicas
+            // OJO para propiedades de colecciones, tipos por referencia o propiedades "IsReadOnly" hay que 
+            // programarlo manualmente por esta razón se deja como "Virtual" el método, ya que MemberwiseClone 
+            // tan sólo hace una copia superficial
+            return this.MemberwiseClone() as EntidadBase;
         }
+
+        object ICloneable.Clone()
+        {
+            return Clone();
+        } 
+        #endregion
     }
 }
