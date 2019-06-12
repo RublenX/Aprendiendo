@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace WinFrmReferenciaExterna
@@ -26,7 +28,6 @@ namespace WinFrmReferenciaExterna
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.AssemblyResolve += new ResolveEventHandler(MyResolveEventHandler);
         }
-
 
         private static Assembly MyResolveEventHandler(object sender, ResolveEventArgs args)
         {
