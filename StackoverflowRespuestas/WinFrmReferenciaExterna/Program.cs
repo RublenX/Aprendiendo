@@ -15,6 +15,7 @@ namespace WinFrmReferenciaExterna
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CargarLibreriasExternas();
+            new LinQAgrupados().Lanzar();
             Application.Run(new Form1());
         }
 
