@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ApiKeyNetFwk.Seguridad;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +15,9 @@ namespace ApiKeyNetFwk
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Autenticación por Message Handler
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new ApiKeyAuthMessageHandler());
         }
     }
 }
