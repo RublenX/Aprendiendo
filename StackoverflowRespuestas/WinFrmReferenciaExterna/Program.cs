@@ -17,6 +17,7 @@ namespace WinFrmReferenciaExterna
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CargarLibreriasExternas();
+            new LinQAgrupados2().Lanzar();
             //new LinQAgrupados().Lanzar();
             string csv = "1,Locard,rlocard0@php.net,Female,S,$90.80\r\n" +
                             "2,Iacobassi,siacobassi1 @timesonline.co.uk,Male,XL,$12.73\r\n" +
