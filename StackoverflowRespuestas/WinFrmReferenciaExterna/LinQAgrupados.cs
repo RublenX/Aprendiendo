@@ -82,13 +82,16 @@ namespace WinFrmReferenciaExterna
                             "5,Bewley,bbewley4 @cbsnews.com,Male,S,$10.20";
             new LinQAgrupados().GananciaValor(csv.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
          */
-        public TipoCamisetaValor GananciaValor(ICollection<string> lineas)
+        public TipoCamisetaValor ObtenerMayorValorPorCamiseta(string csv)
         {
             TipoCamisetaValor resultado = null;
 
+            // Se crea una colección por líneas recuperadas del CSV
+            ICollection<string> lineas = csv.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
             List<TipoCamisetaValor> listaCamisetas = new List<TipoCamisetaValor>();
 
-            // Recoges los resultados en el listado
+            // Recoges los resultados en el listado por cada línea del CSV
             foreach (var linea in lineas)
             {
                 var camposSeparados = linea.Split(',');
@@ -99,8 +102,12 @@ namespace WinFrmReferenciaExterna
                 });
             }
 
-            // Analizas el resultado con LinQ
-            var consulta = listaCamisetas.GroupBy(l => l.Tipo).Select(x => new TipoCamisetaValor { Tipo = x.Key, Valor = x.Sum(y => y.Valor) }).OrderBy(l => l.Valor).Last();
+            // Analizas el resultado con LinQ agrupando por tamaño de camiseta
+            // Seleccionas la camiseta y el sumatorio de los precios agrupados
+            // Ordenas de menor a mayor y eliges el último... o al revés
+            var consulta = listaCamisetas.GroupBy(l => l.Tipo)
+                .Select(x => new TipoCamisetaValor { Tipo = x.Key, Valor = x.Sum(y => y.Valor) })
+                .OrderBy(l => l.Valor).Last();
 
             return resultado;
         }
