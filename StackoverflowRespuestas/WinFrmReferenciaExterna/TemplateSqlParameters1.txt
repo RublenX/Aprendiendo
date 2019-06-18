@@ -1,0 +1,30 @@
+	SqlCommand cmd = new SqlCommand("CantidadesMayoresPorUsuario", conexion);
+	cmd.CommandType = CommandType.StoredProcedure;
+	cmd.BindByName = true;
+
+	SqlParameter @RETURN_VALUE = new SqlParameter("@RETURN_VALUE", SqlDbType.Int, ParameterDirection.ReturnValue);
+	@RETURN_VALUE.Value = DBNull.Value;
+	cmd.Parameters.Add(@RETURN_VALUE);
+
+	SqlParameter @cantidadMayorQue = new SqlParameter("@cantidadMayorQue", SqlDbType.Decimal, ParameterDirection.Input);
+	@cantidadMayorQue.Value = DBNull.Value;
+	cmd.Parameters.Add(@cantidadMayorQue);
+
+	SqlParameter @idUsuario = new SqlParameter("@idUsuario", SqlDbType.Int, ParameterDirection.Input);
+	@idUsuario.Value = DBNull.Value;
+	cmd.Parameters.Add(@idUsuario);
+
+	SqlParameter @codError = new SqlParameter("@codError", SqlDbType.Int, ParameterDirection.InputOutput);
+	@codError.Value = DBNull.Value;
+	cmd.Parameters.Add(@codError);
+
+
+RESUMEN
+Nombre	Tipo	Dirección	Longitud
+@RETURN_VALUE	Int	ReturnValue	0
+@cantidadMayorQue	Decimal	Input	0
+@idUsuario	Int	Input	0
+@codError	Int	InputOutput	0
+
+Conexión con BBDD cerrada correctamente...
+Finalizado Todo OK

@@ -1,0 +1,78 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ output extension=".txt" #>
+<#
+// Cadena de conexión con BBDD
+string cadenaConexion = @"Data Source=.\SQLEXPRESS;Initial Catalog=Db1;Integrated Security=True;";
+// Procedimiento almacenado con los parámetros a extraer
+string procedimientoOracle = "CantidadesMayoresPorUsuario";
+
+string resultado = "Todo OK";
+
+SqlConnection con = new SqlConnection(cadenaConexion);
+SqlCommand cmd = new SqlCommand();
+try
+{
+	cmd.Connection = con;
+	cmd.CommandType = CommandType.StoredProcedure;
+	cmd.CommandText = procedimientoOracle;
+	cmd.Connection.Open();
+	SqlCommandBuilder.DeriveParameters(cmd);
+	StringBuilder strBld = new StringBuilder();
+	strBld.AppendLine("Nombre\tTipo\tDirección\tLongitud");
+
+#>
+	SqlCommand cmd = new SqlCommand("<#=cmd.CommandText#>", conexion);
+	cmd.CommandType = CommandType.StoredProcedure;
+	cmd.BindByName = true;
+
+<#
+
+	foreach (SqlParameter parametro in cmd.Parameters)
+	{
+		strBld.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}", parametro.ParameterName, parametro.SqlDbType, parametro.Direction, parametro.Size));
+#>
+<#
+		if(parametro.Direction == ParameterDirection.Output)
+		{
+#>
+	SqlParameter <#=parametro.ParameterName#> = cmd.Parameters.Add("<#=parametro.ParameterName#>", SqlDbType.<#=parametro.SqlDbType#>, <#=parametro.Size#>, DBNull.Value, ParameterDirection.<#=parametro.Direction#>);
+<#
+		}
+		else
+		{
+#>
+	SqlParameter <#=parametro.ParameterName#> = new SqlParameter("<#=parametro.ParameterName#>", SqlDbType.<#=parametro.SqlDbType#>, ParameterDirection.<#=parametro.Direction#>);
+	<#=parametro.ParameterName#>.Value = DBNull.Value;
+	cmd.Parameters.Add(<#=parametro.ParameterName#>);
+
+<#
+		}
+	}
+#>
+
+RESUMEN
+<#=strBld.ToString()#>
+<#
+}
+catch (Exception ex)
+{
+	resultado = "ERROR : " + ex.Message;
+}
+finally
+{
+	if (cmd.Connection.State != ConnectionState.Closed)
+	{
+		cmd.Connection.Close();
+#>Conexión con BBDD cerrada correctamente...
+<#
+	}
+}
+#>Finalizado <#=resultado#><#
+#>
