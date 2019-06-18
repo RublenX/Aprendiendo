@@ -18,6 +18,14 @@ namespace WinFrmReferenciaExterna
             Application.SetCompatibleTextRenderingDefault(false);
             CargarLibreriasExternas();
             //new LinQAgrupados2().Lanzar();
+            //new LinQAgrupados().Lanzar();
+            string csv = "1,Locard,rlocard0@php.net,Female,S,$90.80\r\n" +
+                            "2,Iacobassi,siacobassi1 @timesonline.co.uk,Male,XL,$12.73\r\n" +
+                            "3,Schall,dschall2 @dagondesign.com,Male,XL,$17.84\r\n" +
+                            "4,Grinyov,ggrinyov3 @sphinn.com,Female,XL,$13.57\r\n" +
+                            "5,Bewley,bbewley4 @cbsnews.com,Male,S,$10.20";
+            new LinQAgrupados().ObtenerMayorValorPorCamiseta(csv);
+            //new LinQAgrupados2().Lanzar();
             new AccesoDatos().LanzarConTrasaccion();
             Application.Run(new Form1());
         }
