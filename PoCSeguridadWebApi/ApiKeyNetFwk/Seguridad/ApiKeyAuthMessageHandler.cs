@@ -22,7 +22,7 @@ namespace ApiKeyNetFwk.Seguridad
         /// <summary>
         /// Cabecera http que indica que contiene la Key de la API
         /// </summary>
-        private const string API_KEY = "API_KEY";
+        internal const string API_KEY = "API_KEY";
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
         CancellationToken cancellationToken)
