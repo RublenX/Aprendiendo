@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiKeyNetFwk", "ApiKeyNetFwk\ApiKeyNetFwk.csproj", "{BB837EC7-1353-4248-8F9F-80930134A8E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtNetFrk", "JwtNetFrk\JwtNetFrk.csproj", "{1B66768F-E622-496C-925C-880249053B5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BB837EC7-1353-4248-8F9F-80930134A8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB837EC7-1353-4248-8F9F-80930134A8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB837EC7-1353-4248-8F9F-80930134A8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B66768F-E622-496C-925C-880249053B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B66768F-E622-496C-925C-880249053B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B66768F-E622-496C-925C-880249053B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B66768F-E622-496C-925C-880249053B5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
