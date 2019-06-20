@@ -1,5 +1,5 @@
 # Aprendiendo
-Pruebas de concepto programadas en .NET y con Visual Studio para aprendizaje personal
+Pruebas de concepto programadas en .NET (C#) y con Visual Studio para aprendizaje personal
 
 ## Empezando
 Llevo poco tiempo en GitHub y por tanto todavía estoy aterrizando, ruego un poco de paciencia hasta organizarme para que los proyectos sean lo más fáciles de descargar y compilar.
@@ -7,7 +7,7 @@ Llevo poco tiempo en GitHub y por tanto todavía estoy aterrizando, ruego un poc
 Por tanto este repositorio está orientado a la comunidad de habla hispana.
 
 ## Prerequisitos
-Visual Studio 2017
+Visual Studio 2017 bajo proyectos en C#
 
 ## Instalación
 Descargar el repositorio y abrir la solución con Visual Studio.
