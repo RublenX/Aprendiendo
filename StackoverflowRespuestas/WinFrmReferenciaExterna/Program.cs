@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -43,7 +44,7 @@ namespace WinFrmReferenciaExterna
             //This handler is called only when the common language runtime tries to bind to the assembly and fails.
 
             //Retrieve the list of referenced assemblies in an array of AssemblyName.
-            Assembly MyAssembly, objExecutingAssemblies;
+            Assembly MyAssembly = null, objExecutingAssemblies;
             string strTempAssmbPath = "";
 
             objExecutingAssemblies = Assembly.GetExecutingAssembly();
@@ -56,13 +57,17 @@ namespace WinFrmReferenciaExterna
                 if (strAssmbName.FullName.Substring(0, strAssmbName.FullName.IndexOf(",")) == args.Name.Substring(0, args.Name.IndexOf(",")))
                 {
                     //Build the path of the assembly from where it has to be loaded.
-                    strTempAssmbPath = @"D:\JuanRu\GitHub\Aprendiendo\StackoverflowRespuestas\ReferenciaDll.UnaLibCualquiera\bin\Debug\ReferenciaDll.UnaLibCualquiera.dll";
+
+                    strTempAssmbPath = Path.Combine(Application.StartupPath, @"ExternalLibraries\ReferenciaDll.UnaLibCualquiera.dll");
                     break;
                 }
 
             }
-            //Load the assembly from the specified path. 
-            MyAssembly = Assembly.LoadFrom(strTempAssmbPath);
+            //Load the assembly from the specified path.
+            if (File.Exists(strTempAssmbPath))
+            {
+                MyAssembly = Assembly.LoadFrom(strTempAssmbPath);
+            }
 
             //Return the loaded assembly.
             return MyAssembly;
