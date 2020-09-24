@@ -14,5 +14,13 @@ namespace EFEjemplo.Models
         public string Descripcion { get; set; }
 
         public TimeSpan Duracion { get; set; }
+
+        public Album Album { get; set; }
+
+        public int AlbumId { get; set; }
+
+        public Autor Autor { get; set; }
+
+        public int AutorId { get; set; }
     }
 }

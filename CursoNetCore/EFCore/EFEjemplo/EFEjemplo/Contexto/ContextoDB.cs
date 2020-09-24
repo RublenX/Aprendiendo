@@ -1,4 +1,5 @@
-﻿using EFEjemplo.Models;
+﻿using EFEjemplo.EntityConfig;
+using EFEjemplo.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,15 @@ namespace EFEjemplo.Contexto
 
         public DbSet<Cancion> Canciones { get; set; }
 
+        public DbSet<Album> Albumnes { get; set; }
+
+        public DbSet<Autor> Autores { get; set; }
+
         // Sobrecarga para el modelo de datos
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            CancionEntityConfig.SetCancionEntityConfig(modelBuilder.Entity<Cancion>());
+
             // Esto sirve si queremos ponerle otro nombre a la tabla, en este caso le he puedo el mismo
             modelBuilder.Entity<Cancion>().ToTable("Canciones");
         }
