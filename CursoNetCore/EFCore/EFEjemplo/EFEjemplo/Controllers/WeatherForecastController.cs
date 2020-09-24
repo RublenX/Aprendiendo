@@ -27,9 +27,8 @@ namespace EFEjemplo.Controllers
             _cancionService = cancionService;
         }
 
-        //public IEnumerable<WeatherForecast> Get()
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> GetAsync()
+        public IEnumerable<WeatherForecast> GetAsync()
         {
             //_cancionService.AddCancion(new Models.Cancion
             //{
@@ -38,12 +37,14 @@ namespace EFEjemplo.Controllers
             //    Titulo = "America"
             //});
 
-            await _cancionService.AddCancionAsync(new Models.Cancion
-            {
-                Descripcion = "Un beso y una flor",
-                Duracion = new TimeSpan(0, 3, 55),
-                Titulo = "Un beso y una flor"
-            });
+            //await _cancionService.AddCancionAsync(new Models.Cancion
+            //{
+            //    Descripcion = "Un beso y una flor",
+            //    Duracion = new TimeSpan(0, 3, 55),
+            //    Titulo = "Un beso y una flor"
+            //});
+
+            var canciones = _cancionService.GetCanciones();
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
