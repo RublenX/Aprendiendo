@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EFEjemplo.Contexto;
+using EFEjemplo.Servicios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,11 @@ namespace EFEjemplo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Se añade la inyección de dependencias de los servicios que queremos que se pasen en los contructores a las clases 
+            // para poder manejar la base de datos sin tener que llamar a las implementaciones
+            services.AddTransient<IContextoDB, ContextoDB>();
+            services.AddTransient<ICancionService, CancionService>();
+
             // Se añade la configuración de conexión con la base de datos
             services.AddDbContext<ContextoDB>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

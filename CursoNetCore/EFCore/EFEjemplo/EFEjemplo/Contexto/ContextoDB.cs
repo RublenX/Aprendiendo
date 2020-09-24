@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EFEjemplo.Contexto
 {
-    public class ContextoDB : DbContext
+    public class ContextoDB : DbContext, IContextoDB
     {
         public ContextoDB(DbContextOptions<ContextoDB> options) : base(options)
         {
