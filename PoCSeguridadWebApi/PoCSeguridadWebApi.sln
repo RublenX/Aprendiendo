@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiKeyNetFwk", "ApiKeyNetFw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtNetFrk", "JwtNetFrk\JwtNetFrk.csproj", "{1B66768F-E622-496C-925C-880249053B5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AadCore", "AadCore\AadCore.csproj", "{0F146C89-F032-4A00-9D5E-505E403E4D3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1B66768F-E622-496C-925C-880249053B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B66768F-E622-496C-925C-880249053B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B66768F-E622-496C-925C-880249053B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F146C89-F032-4A00-9D5E-505E403E4D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F146C89-F032-4A00-9D5E-505E403E4D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F146C89-F032-4A00-9D5E-505E403E4D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F146C89-F032-4A00-9D5E-505E403E4D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
