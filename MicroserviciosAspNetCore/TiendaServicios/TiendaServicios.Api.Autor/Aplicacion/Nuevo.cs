@@ -12,6 +12,10 @@ namespace TiendaServicios.Api.Autor.Aplicacion
     public class Nuevo
     {
         // La primera se encarga de recivir los parámetros del controlador y la segunda que implementa la lógica de la insercción
+
+        /// <summary>
+        /// Clase que se encarga de recibir los parámetros del controlador
+        /// </summary>
         public class Ejecuta : IRequest
         {
             public string Nombre { get; set; }
@@ -21,6 +25,9 @@ namespace TiendaServicios.Api.Autor.Aplicacion
             public DateTime? FechaNacimiento { get; set; }
         }
 
+        /// <summary>
+        /// Clase que se encarga de manejar la implementación de la lógica de insercción
+        /// </summary>
         public class Manejador : IRequestHandler<Ejecuta>
         {
             public readonly ContextoAutor _contexto;
@@ -35,7 +42,8 @@ namespace TiendaServicios.Api.Autor.Aplicacion
                 {
                     Nombre = request.Nombre,
                     Apellido = request.Apellido,
-                    FechaNacimiento = request.FechaNacimiento
+                    FechaNacimiento = request.FechaNacimiento,
+                    AutorLibroGuid = Guid.NewGuid().ToString()
                 };
 
                 _contexto.AutorLibro.Add(autorLibro);
