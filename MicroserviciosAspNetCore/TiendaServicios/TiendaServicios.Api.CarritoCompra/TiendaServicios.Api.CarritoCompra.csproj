@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modelo\" />
     <Folder Include="Aplicacion\" />
-    <Folder Include="Persistencia\" />
   </ItemGroup>
 
 
