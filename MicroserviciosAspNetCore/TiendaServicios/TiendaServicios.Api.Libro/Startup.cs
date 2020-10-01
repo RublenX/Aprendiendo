@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +38,8 @@ namespace TiendaServicios.Api.Libro
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
+
+            services.AddAutoMapper(typeof(Consulta.Ejecuta).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
