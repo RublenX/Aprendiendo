@@ -7,7 +7,7 @@ namespace TiendaServicios.Api.CarritoCompra.Modelo
 {
     public class CarritoSesion
     {
-        public int CarritoSessionId { get; set; }
+        public int CarritoSesionId { get; set; }
 
         public DateTime? FechaCreacion { get; set; }
 

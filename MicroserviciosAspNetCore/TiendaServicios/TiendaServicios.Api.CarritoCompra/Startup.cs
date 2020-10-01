@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TiendaServicios.Api.CarritoCompra.Persistencia;
 
 namespace TiendaServicios.Api.CarritoCompra
 {
@@ -25,6 +27,11 @@ namespace TiendaServicios.Api.CarritoCompra
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<CarritoContexto>(options =>
+            {
+                options.UseMySQL(Configuration.GetConnectionString("ConexionDatabase"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
