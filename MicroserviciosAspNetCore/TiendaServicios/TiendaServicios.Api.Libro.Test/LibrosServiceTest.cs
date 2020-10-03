@@ -44,6 +44,9 @@ namespace TiendaServicios.Api.Libro.Test
             dbSet.As<IAsyncEnumerable<LibreriaMaterial>>().Setup(x => x.GetAsyncEnumerator(new System.Threading.CancellationToken()))
                 .Returns(new AsyncEnumerator<LibreriaMaterial>(dataPrueba.GetEnumerator()));
 
+            // Se agrega el provider para poder hacer lo filtros hacia la entidad LiberiaMaterial
+            dbSet.As<IQueryable<LibreriaMaterial>>().Setup(x => x.Provider).Returns(new AsyncQueryProvider<LibreriaMaterial>(dataPrueba.Provider));
+
             // Instancia del contexto
             var contexto = new Mock<ContextoLibreria>();
             contexto.Setup(x => x.LibreriaMaterial).Returns(dbSet.Object);
