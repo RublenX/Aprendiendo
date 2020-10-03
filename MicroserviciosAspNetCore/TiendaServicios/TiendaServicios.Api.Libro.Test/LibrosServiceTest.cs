@@ -54,6 +54,29 @@ namespace TiendaServicios.Api.Libro.Test
         }
 
         [Fact]
+        public async Task GetLibroPorId()
+        {
+            var mockContexto = CrearContexto();
+
+            var mapConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingTest());
+            });
+
+            var mapper = mapConfig.CreateMapper();
+
+            var request = new ConsultaFiltro.LibroUnico();
+            request.LibroId = Guid.Empty;
+
+            var manejador = new ConsultaFiltro.Manejador(mockContexto.Object, mapper);
+
+            var libro = await manejador.Handle(request, new System.Threading.CancellationToken());
+
+            Assert.NotNull(libro);
+            Assert.True(libro.LibreriaMaterialId == Guid.Empty);
+        }
+
+        [Fact]
         public async Task GetLibrosAsync()
         {
             System.Diagnostics.Debugger.Launch();
