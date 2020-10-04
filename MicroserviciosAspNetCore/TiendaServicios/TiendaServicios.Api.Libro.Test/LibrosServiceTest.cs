@@ -79,7 +79,7 @@ namespace TiendaServicios.Api.Libro.Test
         [Fact]
         public async Task GetLibrosAsync()
         {
-            System.Diagnostics.Debugger.Launch();
+            //System.Diagnostics.Debugger.Launch();
 
             // Emulación de Entity Framework
             var mockContexto = CrearContexto();
@@ -101,6 +101,29 @@ namespace TiendaServicios.Api.Libro.Test
             var lista = await manejador.Handle(request, new System.Threading.CancellationToken());
 
             Assert.True(lista.Any());
+        }
+
+        [Fact]
+        public async Task GuardarLibro()
+        {
+            //System.Diagnostics.Debugger.Launch();
+
+            var options = new DbContextOptionsBuilder<ContextoLibreria>()
+                .UseInMemoryDatabase(databaseName: "BaseDatosLibro")
+                .Options;
+
+            var contexto = new ContextoLibreria(options);
+
+            var request = new Nuevo.Ejecuta();
+            request.Titulo = "Libro de Microservice";
+            request.AutorLibro = Guid.Empty;
+            request.FechaPublicacion = DateTime.Now;
+
+            var manejador = new Nuevo.Manejador(contexto);
+
+            var libro = await manejador.Handle(request, new System.Threading.CancellationToken());
+             
+            Assert.True(libro != null);
         }
     }
 }
