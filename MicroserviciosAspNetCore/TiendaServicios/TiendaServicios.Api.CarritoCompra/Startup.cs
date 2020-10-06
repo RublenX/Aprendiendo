@@ -32,8 +32,6 @@ namespace TiendaServicios.Api.CarritoCompra
         {
             services.AddScoped<ILibrosService, LibrosService>();
 
-            services.AddControllers();
-
             services.AddDbContext<CarritoContexto>(options =>
             {
                 options.UseMySQL(Configuration.GetConnectionString("ConexionDatabase"));
@@ -45,6 +43,8 @@ namespace TiendaServicios.Api.CarritoCompra
             {
                 config.BaseAddress = new Uri(Configuration["Services:Libros"]);
             });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
