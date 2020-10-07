@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using TiendaServicios.Api.Gateway.MessageHandler;
 
 namespace TiendaServicios.Api.Gateway
 {
@@ -27,7 +28,7 @@ namespace TiendaServicios.Api.Gateway
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddControllers();
-            services.AddOcelot();
+            services.AddOcelot().AddDelegatingHandler<LibroHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
