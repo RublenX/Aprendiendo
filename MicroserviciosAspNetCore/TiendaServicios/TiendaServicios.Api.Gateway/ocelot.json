@@ -23,6 +23,54 @@
       ],
       "UpstreamPathTemplate": "/Libro/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Autor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tiendaservicios.api.autor",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Autor",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Autor/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tiendaservicios.api.autor",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Autor/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/CarritoCompras",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tiendaservicios.api.carritocompra",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/CarritoCompras",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/CarritoCompras/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "tiendaservicios.api.carritocompra",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/CarritoCompras/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     }
   ]
 }
