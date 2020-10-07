@@ -5,6 +5,7 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -87,12 +88,38 @@ namespace TiendaServicios.RabbitMQ.Bus.Implement
             // Es el encargado de leer los mensajes del queu
             consumer.Received += Consumer_Delegate;
 
-            channel.BasicConsume(eventoNombre, true, consumer); 
+            channel.BasicConsume(eventoNombre, true, consumer);
         }
 
-        private Task Consumer_Delegate(object sender, BasicDeliverEventArgs @event)
+        private async Task Consumer_Delegate(object sender, BasicDeliverEventArgs e)
         {
-            throw new NotImplementedException();
+            var nombreEvento = e.RoutingKey;
+            var message = Encoding.UTF8.GetString(e.Body.ToArray());
+
+            try
+            {
+                if (_manejadores.ContainsKey(nombreEvento))
+                {
+                    var subscriptions = _manejadores[nombreEvento];
+                    foreach (var sb in subscriptions)
+                    {
+                        var manejador = Activator.CreateInstance(sb);
+                        if (manejador == null) continue;
+
+                        var tipoEvento = _eventoTipos.SingleOrDefault(x => x.Name == nombreEvento);
+                        var eventoDS = JsonConvert.DeserializeObject(message, tipoEvento);
+
+                        var concretoTipo = typeof(IEventoManejador<>).MakeGenericType(tipoEvento);
+
+                        await (Task)concretoTipo.GetMethod("Handle").Invoke(manejador, new object[] { eventoDS });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }
