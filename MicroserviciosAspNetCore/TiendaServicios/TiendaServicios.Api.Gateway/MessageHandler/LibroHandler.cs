@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using TiendaServicios.Api.Gateway.LibroRemote;
 
 namespace TiendaServicios.Api.Gateway.MessageHandler
 {
@@ -22,6 +24,13 @@ namespace TiendaServicios.Api.Gateway.MessageHandler
             var tiempo = Stopwatch.StartNew();
             _logger.LogInformation("Inicia el request");
             var response = await base.SendAsync(request, cancellationToken);
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = await response.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var resultado = JsonSerializer.Deserialize<LibroModeloRemote>(contenido, options);
+            }
+
             _logger.LogInformation($"Este proceso se hizo en {tiempo.ElapsedMilliseconds} ms");
 
             return response;
