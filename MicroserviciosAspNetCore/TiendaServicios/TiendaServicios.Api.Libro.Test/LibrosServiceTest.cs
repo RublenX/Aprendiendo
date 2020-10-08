@@ -119,7 +119,8 @@ namespace TiendaServicios.Api.Libro.Test
             request.AutorLibro = Guid.Empty;
             request.FechaPublicacion = DateTime.Now;
 
-            var manejador = new Nuevo.Manejador(contexto);
+            RabbitMQ.Bus.BusRabbit.IRabbitEventBus eventBus = null;
+            var manejador = new Nuevo.Manejador(contexto, eventBus);
 
             var libro = await manejador.Handle(request, new System.Threading.CancellationToken());
              
