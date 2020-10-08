@@ -14,14 +14,14 @@ namespace TiendaServicios.Api.Autor.ManejadorRabbit
 
         public EmailEventoManejador() { }
 
-        //public EmailEventoManejador(ILogger<EmailEventoManejador> logger)
-        //{
-        //    _logger = logger;
-        //}
+        public EmailEventoManejador(ILogger<EmailEventoManejador> logger)
+        {
+            _logger = logger;
+        }
 
         public Task Handle(EmailEventoQueue @event)
         {
-            //_logger.LogInformation($"Este es el valor que consumo desde RabbitMQ {@event.Titulo}");
+            _logger.LogInformation($"Este es el valor que consumo desde RabbitMQ {@event.Titulo}");
 
             return Task.CompletedTask;
         }
