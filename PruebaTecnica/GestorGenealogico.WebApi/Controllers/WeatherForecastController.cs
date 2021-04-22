@@ -26,6 +26,12 @@ namespace GestorGenealogico.WebApi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogTrace("Traza desde WeatherForecastController.Get");
+            _logger.LogDebug("Depuración WeatherForecastController.Get");
+            _logger.LogInformation("Información desde WeatherForecastController.Get");
+            _logger.LogWarning("Aviso desde WeatherForecastController.Get");
+            _logger.LogError("Error desde WeatherForecastController.Get");
+            _logger.LogCritical("Crítico desde WeatherForecastController.Get");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
