@@ -17,6 +17,12 @@ namespace EFClientEvaluation
 
             return url;
         }
+
+        public static bool NonDeletedRecords(Blog record)
+        {
+            return !record.DeleteDateTime.HasValue || record.DeleteDateTime > DateTime.UtcNow;
+        }
+
         #endregion
 
         private static void Main(string[] args)
@@ -47,6 +53,20 @@ namespace EFClientEvaluation
                         .Where(blog => StandardizeUrl(blog.Url).Contains("dotnet"))
                         .ToList();
                     #endregion
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            using (var context = new BloggingContext())
+            {
+                try
+                {
+                    var blogs = context.Blogs
+                        .Where(blog => NonDeletedRecords(blog))
+                        .ToList();
                 }
                 catch (Exception e)
                 {
