@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFClientEvaluation", "EFClientEvaluation\EFClientEvaluation.csproj", "{78C457E9-B01E-486C-ACBD-61B522F2FA90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFClientEvaluation", "EFClientEvaluation\EFClientEvaluation.csproj", "{78C457E9-B01E-486C-ACBD-61B522F2FA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvaluacionObjetosNoEntidad", "EvaluacionObjetosNoEntidad\EvaluacionObjetosNoEntidad.csproj", "{BC4DF535-2BAA-4801-BA64-F1A426DC2A7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{78C457E9-B01E-486C-ACBD-61B522F2FA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78C457E9-B01E-486C-ACBD-61B522F2FA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78C457E9-B01E-486C-ACBD-61B522F2FA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4DF535-2BAA-4801-BA64-F1A426DC2A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4DF535-2BAA-4801-BA64-F1A426DC2A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4DF535-2BAA-4801-BA64-F1A426DC2A7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4DF535-2BAA-4801-BA64-F1A426DC2A7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
