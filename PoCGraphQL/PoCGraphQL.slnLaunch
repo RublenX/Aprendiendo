@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Backend + Frontend",
+    "Projects": [
+      {
+        "Path": "PedidosGraphQL.Api\\PedidosGraphQL.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "pedidos-graphql-web\\pedidos-graphql-web.esproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]

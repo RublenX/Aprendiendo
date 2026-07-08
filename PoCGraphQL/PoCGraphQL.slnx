@@ -1,2 +1,7 @@
 <Solution>
+  <Project Path="pedidos-graphql-web/pedidos-graphql-web.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="PedidosGraphQL.Api/PedidosGraphQL.Api.csproj" />
 </Solution>
